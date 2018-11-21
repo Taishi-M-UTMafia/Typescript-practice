@@ -17,7 +17,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx','ts']
   },
   devServer: {
     historyApiFallback: true,
@@ -26,5 +26,16 @@ module.exports = {
       aggregateTimeout: 300,
       poll: 1000
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
+        }
+      }
+    ]
   }
 };
