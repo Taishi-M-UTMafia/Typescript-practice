@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class BookDetail extends Component {
+interface Props {
+  books: any,
+}
+
+class BookDetail extends Component<{book: any}> {
   render() {
     if(!this.props.book) {
       return <div>Select a book to get started</div>
@@ -17,7 +21,7 @@ class BookDetail extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   return {
     book: state.activeBook
   };

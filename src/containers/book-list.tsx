@@ -3,10 +3,15 @@ import { connect } from 'react-redux'; //{}で囲むと、ライブラリの一�
 import { selectBook } from '../actions';
 import { bindActionCreators } from 'redux'
 
+interface Props {
+  books: any,
+  selectBook: any,
+}
+
 // export default つけない(ただのcomponentではなくcontainerだから)
-class BookList extends Component {
+class BookList extends Component<{books: any, selectBook: any}> {
   renderList() {
-    return this.props.books.map((book) => {
+    return this.props.books.map((book: any) => {
       return (
         <li
           key={book.title}
@@ -30,14 +35,14 @@ class BookList extends Component {
 
 // ここでreturnされたものはBookListclass内でpropsとして扱われる.ReactとReduxの接着剤
 // TODO(Sunny): returnが()ではなく{}なのはなぜ？
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   return {
     books: state.books
   };
 }
 
 // selectBookがpropsとして使えるようになる
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   // ActionのselectBookが呼ばれるとreducerに結果が渡される
   return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
