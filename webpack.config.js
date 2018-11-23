@@ -1,23 +1,23 @@
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: ['./src/index.tsx'],
   output: {
     path: __dirname,
     publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
+        use: {
+          loader: 'ts-loader'
         }
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx','ts']
+    extensions: ['.js', '.ts', '.tsx']
   },
   devServer: {
     historyApiFallback: true,
@@ -27,15 +27,4 @@ module.exports = {
       poll: 1000
     }
   },
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader'
-        }
-      }
-    ]
-  }
 };

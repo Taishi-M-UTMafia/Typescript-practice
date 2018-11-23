@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 interface Props {
   books: any,
 }
 
-class BookDetail extends Component<{book: any}> {
+class BookDetail extends React.Component<{book: any}> {
   render() {
     if(!this.props.book) {
       return <div>Select a book to get started</div>

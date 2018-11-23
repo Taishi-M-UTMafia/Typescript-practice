@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux'; //{}で囲むと、ライブラリの一部をインポート
 import { selectBook } from '../actions';
 import { bindActionCreators } from 'redux'
@@ -9,7 +9,7 @@ interface Props {
 }
 
 // export default つけない(ただのcomponentではなくcontainerだから)
-class BookList extends Component<{books: any, selectBook: any}> {
+class BookList extends React.Component<{books: any, selectBook: any}> {
   renderList() {
     return this.props.books.map((book: any) => {
       return (
