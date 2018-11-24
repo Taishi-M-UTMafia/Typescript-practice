@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Book } from '../constants/static_types'
 
 interface Props {
-  books: any,
+  book: Book,
 }
 
-class BookDetail extends React.Component<{book: any}> {
-  render() {
-    if(!this.props.book) {
+class BookDetail extends React.Component<Props, {}> {
+  render(): JSX.Element {
+    const { book } = this.props
+    if(!book) {
       return <div>Select a book to get started</div>
     }
 
     return(
       <div>
         <h3>Details for:</h3>
-        <div>Title: {this.props.book.title}</div>
-        <div>Pages: {this.props.book.pages}</div>
+        <div>Title: {book.title}</div>
+        <div>Pages: {book.pages}</div>
       </div>
     );
   }

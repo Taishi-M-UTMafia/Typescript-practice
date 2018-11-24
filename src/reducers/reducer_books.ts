@@ -1,10 +1,7 @@
-type BookList = {
-  title: string,
-  pages: number
-}
+import { Books } from '../constants/static_types'
 
 // stateはここの関数で生み出される
-export default function(): BookList[] {
+export default function(): Books {
   return [
     { title: 'Javascript', pages: 101},
     { title: 'Harry Potter', pages: 39},

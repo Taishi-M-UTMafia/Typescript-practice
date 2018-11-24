@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux'; //{}で囲むと、ライブラリの一部をインポート
+import { Book, Books } from '../constants/static_types'
 import { selectBook } from '../actions';
 import { bindActionCreators } from 'redux'
 
 interface Props {
-  books: any,
-  selectBook: any,
+  books: Books,
+  selectBook: (book: Book) => void,
 }
 
 // export default つけない(ただのcomponentではなくcontainerだから)
-class BookList extends React.Component<{books: any, selectBook: any}> {
-  renderList() {
-    return this.props.books.map((book: any) => {
+class BookList extends React.Component<Props, {}> {
+  renderList(): JSX.Element[] {
+    return this.props.books.map((book: Book) => {
       return (
         <li
           key={book.title}
@@ -24,7 +25,7 @@ class BookList extends React.Component<{books: any, selectBook: any}> {
     });
   }
 
-  render() {
+  render(): JSX.Element {
     return(
       <ul className='list-group col-sm-4'>
         { this.renderList() }
