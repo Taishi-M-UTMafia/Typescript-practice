@@ -35,7 +35,6 @@ class BookList extends React.Component<Props, {}> {
 }
 
 // ここでreturnされたものはBookListclass内でpropsとして扱われる.ReactとReduxの接着剤
-// TODO(Sunny): returnが()ではなく{}なのはなぜ？
 function mapStateToProps(state: any) {
   return {
     books: state.books
