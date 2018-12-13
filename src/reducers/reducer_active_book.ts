@@ -1,10 +1,10 @@
-import { Book } from '../constants/static_types'
-import { AnyAction } from 'redux';
+import { BookAction } from '../actions/index'
+import { ActiveBookState } from '../constants/static_types'
 
 // stateとactionを引数に持つ
 // stateはapplication全体のstateではなく、reducer内限定のもの
 // TODO: Actionの型付け
-export default function(state: Book | null = null, action: AnyAction) {
+export default function(state: ActiveBookState = null, action: BookAction): ActiveBookState {
   switch(action.type) {
     case 'BOOK_SELECTED':
       return action.payload;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux'; //{}で囲むと、ライブラリの一部をインポート
 import { Book, Books } from '../constants/static_types'
-import { selectBook } from '../actions';
+import { selectBook } from '../actions/index'
 import { bindActionCreators } from 'redux'
 
 interface Props {
@@ -35,16 +35,14 @@ class BookList extends React.Component<Props, {}> {
 }
 
 // ここでreturnされたものはBookListclass内でpropsとして扱われる.ReactとReduxの接着剤
-function mapStateToProps(state: any) {
-  return {
-    books: state.books
-  };
-}
+const mapStateToProps = ({ books }: any) => (
+  { books }
+)
 
 // selectBookがpropsとして使えるようになる
 function mapDispatchToProps(dispatch: any) {
   // ActionのselectBookが呼ばれるとreducerに結果が渡される
-  return bindActionCreators({ selectBook: selectBook }, dispatch);
+  return bindActionCreators({ selectBook }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);

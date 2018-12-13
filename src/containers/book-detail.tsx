@@ -18,10 +18,9 @@ const BookDetail: React.SFC<Props> = ({ activeBook }) => {
   );
 }
 
-function mapStateToProps(state: any) {
-  return {
-    activeBook: state.activeBook
-  };
-}
+// TODO: ここをanyではなくする
+const mapStateToProps = ({ activeBook }: any) => (
+  { activeBook }
+)
 
 export default connect(mapStateToProps)(BookDetail);
