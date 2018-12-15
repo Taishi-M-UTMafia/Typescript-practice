@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, InjectedFormProps } from 'redux-form'
+import { bindActionCreators } from 'redux'
+import { selectBook } from '../actions'
 
 interface Props {
   activeBook: any
+  selectBook: any
 }
 
 class TestForm extends React.Component<InjectedFormProps & Props> {
@@ -28,6 +31,11 @@ class TestForm extends React.Component<InjectedFormProps & Props> {
     console.log('email:', email)
     console.log('password:', password)
     console.log(this.props.activeBook)
+    const book = {
+      title: 'hoge',
+      pages: 666
+    }
+    this.props.selectBook(book)
   }
 
   render() {
@@ -67,7 +75,11 @@ const mapStateToProps = ({ activeBook }: any) => {
   return { activeBook }
 }
 
+const mapDispatchToProps = (dispatch: any) => {
+  return bindActionCreators({ selectBook }, dispatch)
+}
+
 export default reduxForm({
   validate,
   form: 'TestForm',
-})(connect(mapStateToProps)(TestForm))
+})(connect(mapStateToProps, mapDispatchToProps)(TestForm))
