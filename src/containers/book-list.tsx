@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 
 interface Props {
   books: Books,
-  selectBook: (book: Book) => void,
+  selectBook: (book: Book) => void
 }
 
 // export default つけない(ただのcomponentではなくcontainerだから)
