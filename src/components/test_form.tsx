@@ -2,7 +2,11 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, InjectedFormProps } from 'redux-form'
 
-class TestForm extends React.Component<InjectedFormProps> {
+interface Props {
+  activeBook: any
+}
+
+class TestForm extends React.Component<InjectedFormProps & Props> {
   renderField({ placeholder, type, input, meta: { touched, error } }: any) {
     debugger
     const classNames = `form-group ${touched && error ? 'has-danger' : ''} field-style fieled-text`
