@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm, InjectedFormProps } from 'redux-form'
 
 class TestForm extends React.Component<InjectedFormProps> {
@@ -22,6 +23,7 @@ class TestForm extends React.Component<InjectedFormProps> {
   onSubmit({ email, password }: any) {
     console.log('email:', email)
     console.log('password:', password)
+    console.log(this.props.activeBook)
   }
 
   render() {
@@ -57,7 +59,11 @@ function validate(values: any) {
   return errors
 }
 
+const mapStateToProps = ({ activeBook }: any) => {
+  return { activeBook }
+}
+
 export default reduxForm({
   validate,
   form: 'TestForm',
-})(TestForm)
+})(connect(mapStateToProps)(TestForm))
